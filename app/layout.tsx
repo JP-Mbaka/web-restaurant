@@ -1,39 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Mochiy_Pop_One,
-  Montserrat_Alternates,
-  Poppins,
-  Satisfy,
-} from "next/font/google";
 import "./globals.css";
-
-const mochiyPopOne = Mochiy_Pop_One({
-  variable: "--font-mochiy",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400"],
-});
-
-const montserratAlt = Montserrat_Alternates({
-  variable: "--font-montserrat-alternates",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const satisfy = Satisfy({
-  variable: "--font-satisfy",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -47,11 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${mochiyPopOne.variable} ${poppins.variable} ${montserratAlt.variable} ${satisfy.variable}`}
-      >
-        {children}
-      </body>
+      <body className={``}>{children}</body>
     </html>
   );
 }

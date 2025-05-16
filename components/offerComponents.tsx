@@ -1,15 +1,136 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+
+const recommendedFood = [
+  {
+    item: "Coffee",
+    img: "/coffee.jpg",
+    category: "add-ons",
+    price: 200,
+  },
+  {
+    item: "Egwusi",
+    img: "/egwusi.jpg",
+    category: "soup",
+    price: 1200,
+  },
+  {
+    item: "Jellof Rice",
+    img: "/jellof.jpg",
+    category: "main",
+    price: 3750,
+  },
+];
+
+const menuFood = [
+  {
+    item: "Coffee",
+    img: "/coffee.jpg",
+    category: "add-ons",
+    price: 200,
+  },
+  {
+    item: "Egwusi",
+    img: "/egwusi.jpg",
+    category: "soup",
+    price: 1200,
+  },
+  {
+    item: "Jellof Rice",
+    img: "/jellof.jpg",
+    category: "main",
+    price: 3750,
+  },
+  {
+    item: "Coffee",
+    img: "/coffee.jpg",
+    category: "add-ons",
+    price: 200,
+  },
+  {
+    item: "Egwusi",
+    img: "/egwusi.jpg",
+    category: "soup",
+    price: 1200,
+  },
+  {
+    item: "Jellof Rice",
+    img: "/jellof.jpg",
+    category: "main",
+    price: 3750,
+  },
+  {
+    item: "Coffee",
+    img: "/coffee.jpg",
+    category: "add-ons",
+    price: 200,
+  },
+  {
+    item: "Egwusi",
+    img: "/egwusi.jpg",
+    category: "soup",
+    price: 1200,
+  },
+  {
+    item: "Jellof Rice",
+    img: "/jellof.jpg",
+    category: "main",
+    price: 3750,
+  },
+  {
+    item: "Coffee",
+    img: "/coffee.jpg",
+    category: "add-ons",
+    price: 200,
+  },
+  {
+    item: "Egwusi",
+    img: "/egwusi.jpg",
+    category: "soup",
+    price: 1200,
+  },
+  {
+    item: "Jellof Rice",
+    img: "/jellof.jpg",
+    category: "main",
+    price: 3750,
+  },
+  {
+    item: "Coffee",
+    img: "/coffee.jpg",
+    category: "add-ons",
+    price: 200,
+  },
+  {
+    item: "Egwusi",
+    img: "/egwusi.jpg",
+    category: "soup",
+    price: 1200,
+  },
+  {
+    item: "Jellof Rice",
+    img: "/jellof.jpg",
+    category: "main",
+    price: 3750,
+  },
+];
 
 function OfferComponents() {
+  const [selectedRecommendFood, setSelectedRecommendFood] = useState("main");
+  const [selectedMenuFood, setSelectedMenuFood] = useState("main");
+  const filteredRecommend = recommendedFood.filter(
+    (item) => item.category === selectedRecommendFood
+  );
+  const filteredMenu = menuFood.filter(
+    (item) => item.category === selectedMenuFood
+  );
   return (
     <>
-      <section className="bg-yellow-700 text-amber-100 py-8">
+      <section id="recommend" className="bg-yellow-700 text-amber-100 py-28">
         <div className="flex justify-center">
           <div className="inline-flex flex-col ">
             <h2 className="bg-amber-100 py-1 px-1.5 text-2xl text-black">
-              <span className="text-yellow-700 font-semibold">
-                RECOMMENDED{" "}
-              </span>
+              <span className="text-yellow-700 font-semibold">RECOMMENDED</span>
               BREAKFAST
             </h2>
             <p className="font-thin font-serif tracking-widest text-center pt-2">
@@ -17,35 +138,75 @@ function OfferComponents() {
             </p>
           </div>
         </div>
+        <div className="flex justify-center mt-6">
+          <div className="flex gap-20">
+            {["Main", "Swallow", "Soup", "Add-Ons", "Drinks", "Other"].map(
+              (item, index) => {
+                return (
+                  <h1
+                    key={index}
+                    onClick={() => {
+                      setSelectedRecommendFood((item || "").toLowerCase());
+                      console.log("jdekedkekkdsk: ", selectedMenuFood);
+                    }}
+                    className="hover:bg-amber-100 hover:text-amber-700 px-4 py-2 rounded-2xl cursor-pointer"
+                  >
+                    {item}
+                  </h1>
+                );
+              }
+            )}
+          </div>
+        </div>
         <div className="grid grid-cols-2 gap-4 p-8 mx-auto w-fit">
-          {["j", "i", "y", "y", "o", "9", "0"].map((e, index) => {
+          {filteredRecommend!.map((e, index) => {
             if (index % 2 != 0) {
               return (
-                <div key={e} className="flex items-center">
-                  <h2 className="ml-2">
-                    <span>&#8358;</span>1,500
-                  </h2>
+                <div key={index} className="flex items-center">
+                  <div className="flex flex-col text-left">
+                    <h1>{e.item}</h1>
+                    <h4 className="ml-2">
+                      <span>&#8358;</span>
+                      {e.price}
+                    </h4>
+                  </div>
                   <div>
                     .....................................................
                   </div>
-                  <div className="h-32 w-32 bg-fuchsia-900 mr-2"></div>
+                  <div className="h-32 w-32 bg-fuchsia-900 rounded-full ml-2 overflow-hidden">
+                    <img
+                      src={e.img}
+                      alt={e.item}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
-                <div key={e} className="flex items-center">
-                  <div className="h-32 w-32 bg-fuchsia-900 mr-2"></div>
-                  .................................
-                  <h2 className="ml-2">
-                    <span>&#8358;</span>1,500
-                  </h2>
+                <div key={index} className="flex items-center">
+                  <div className="h-32 w-32 bg-fuchsia-900 rounded-full mr-2 overflow-hidden">
+                    <img
+                      src={e.img}
+                      alt={e.item}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  .....................................................
+                  <div className="flex flex-col text-left">
+                    <h1>{e.item}</h1>
+                    <h4 className="ml-2">
+                      <span>&#8358;</span>
+                      {e.price}
+                    </h4>
+                  </div>
                 </div>
               );
             }
           })}
         </div>
       </section>
-      <section className=" py-8">
+      <section id="menu" className=" py-28">
         <div className="flex justify-center">
           <div className="inline-flex flex-col ">
             <h2 className="bg-amber-100 py-1 px-1.5 text-2xl text-black text-center">
@@ -56,28 +217,68 @@ function OfferComponents() {
             </p>
           </div>
         </div>
+        <div className="flex justify-center mt-6">
+          <div className="flex gap-20">
+            {["Main", "Swallow", "Soup", "Add-Ons", "Drinks", "Other"].map(
+              (item, index) => {
+                return (
+                  <h1
+                    key={index}
+                    onClick={() => {
+                      setSelectedMenuFood((item || "").toLowerCase());
+                      console.log("jdekedkekkdsk: ", selectedMenuFood);
+                    }}
+                    className="hover:bg-amber-700  hover:text-amber-100 px-4 py-2 rounded-2xl cursor-pointer"
+                  >
+                    {item}
+                  </h1>
+                );
+              }
+            )}
+          </div>
+        </div>
         <div className="grid grid-cols-2 gap-4 p-8 text-yellow-700 mx-auto w-fit">
-          {["j", "i", "y", "y", "o", "9", "0"].map((e, index) => {
+          {filteredMenu!.map((e, index) => {
             if (index % 2 != 0) {
               return (
-                <div key={e} className="flex items-center">
-                  <h2 className="ml-2">
-                    <span>&#8358;</span>1,500
-                  </h2>
+                <div key={index} className="flex items-center">
+                  <div className="flex flex-col text-left">
+                    <h1>{e.item}</h1>
+                    <h4 className="ml-2">
+                      <span>&#8358;</span>
+                      {e.price}
+                    </h4>
+                  </div>
                   <div>
                     .....................................................
                   </div>
-                  <div className="h-32 w-32 bg-fuchsia-900 mr-2"></div>
+                  <div className="h-32 w-32 bg-fuchsia-900 rounded-full ml-2 overflow-hidden">
+                    <img
+                      src={e.img}
+                      alt={e.item}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
-                <div key={e} className="flex items-center">
-                  <div className="h-32 w-32 bg-fuchsia-900 mr-2"></div>
+                <div key={index} className="flex items-center">
+                  <div className="h-32 w-32 bg-fuchsia-900 rounded-full mr-2 overflow-hidden">
+                    <img
+                      src={e.img}
+                      alt={e.item}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   .................................
-                  <h2 className="ml-2 ">
-                    <span>&#8358;</span>1,500
-                  </h2>
+                  <div className="flex flex-col text-left">
+                    <h1>{e.item}</h1>
+                    <h4 className="ml-2">
+                      <span>&#8358;</span>
+                      {e.price}
+                    </h4>
+                  </div>
                 </div>
               );
             }
