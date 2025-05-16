@@ -124,14 +124,26 @@ function OfferComponents() {
   const filteredMenu = menuFood.filter(
     (item) => item.category === selectedMenuFood
   );
+
+  const getGreeting = (): string => {
+    const hour = new Date().getHours(); // returns 0 - 23
+
+    if (hour >= 5 && hour < 12) {
+      return "Breakfast";
+    } else if (hour >= 12 && hour < 17) {
+      return "Lunch";
+    } else {
+      return "Dinner";
+    }
+  };
   return (
     <>
       <section id="recommend" className="bg-yellow-700 text-amber-100 py-28">
         <div className="flex justify-center">
           <div className="inline-flex flex-col ">
             <h2 className="bg-amber-100 py-1 px-1.5 text-2xl text-black">
-              <span className="text-yellow-700 font-semibold">RECOMMENDED</span>
-              BREAKFAST
+              <span className="text-yellow-700 font-semibold">RECOMMENDED</span>{" "}
+              {getGreeting()}
             </h2>
             <p className="font-thin font-serif tracking-widest text-center pt-2">
               Check Out Our Tasty <span>Menu</span>
