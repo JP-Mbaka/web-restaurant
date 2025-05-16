@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import SimpleCarousel from "./carousel";
 import Link from "next/link";
+import LiveTimeDisplay from "./timeComponent";
 
 function NavComponent() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,8 +34,10 @@ function NavComponent() {
               }`}
             >
               <div className="flex space-x-5">
-                <div className="contact">+1 5589 55488 55</div>
-                <div className="Time">Mon-Sat: 11:00am-23:00Pm</div>
+                <div className="contact">+2349133950084</div>
+                <div className="Time">
+                  <LiveTimeDisplay />
+                </div>
               </div>
               <div>
                 <button className="">Book a table</button>

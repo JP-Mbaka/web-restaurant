@@ -129,11 +129,11 @@ function OfferComponents() {
     const hour = new Date().getHours(); // returns 0 - 23
 
     if (hour >= 5 && hour < 12) {
-      return "Breakfast";
+      return "BREAKFAST";
     } else if (hour >= 12 && hour < 17) {
-      return "Lunch";
+      return "LUNCH";
     } else {
-      return "Dinner";
+      return "DINNER";
     }
   };
   return (
