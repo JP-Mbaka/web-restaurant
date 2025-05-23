@@ -1,12 +1,17 @@
-export async function contentFilter(dataInput: string) {
+declare type collaborateType = {
+  mealTime: string;
+  foodItem: string;
+};
+export async function collaborativeFilter(input: collaborateType) {
   try {
-    const res = await fetch("https://restaurant-ml.onrender.com/content", {
+    const res = await fetch("https://restaurant-ml.onrender.com/collaborate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        mealTime: dataInput,
+        mealTime: input.mealTime,
+        item: input.foodItem,
       }),
     });
 
@@ -22,7 +27,7 @@ export async function contentFilter(dataInput: string) {
       .map(([key]) => key);
 
     // console.log("ytwjhbnduyw: ", sortedKeys);
-    return sortedKeys.slice(0, 20);
+    return sortedKeys.slice(0,20);
   } catch (error) {
     console.error("Error:", error);
     return null;

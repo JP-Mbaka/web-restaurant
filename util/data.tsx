@@ -32,10 +32,10 @@ export const restaurantData = {
       location: "alice.johnson@example.com",
       food: [
         "Amala",
-        "Bitter Leaf Soup",
+        "Bitter Leaf",
         "Oha Soup",
-        "Egusi Soup",
-        "Ewedu Soup",
+        "Egusi",
+        "Ewedu",
         "Fish",
         "Soda Drinks",
         "Youghurt",
@@ -87,7 +87,7 @@ export const allFoods = {
     },
     {
       id: 3,
-      item: "Bitter Leaf Soup",
+      item: "Bitter Leaf",
       img: "/bitterleaf.jpg",
       price: 1500,
       category: "soup",
