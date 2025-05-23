@@ -18,7 +18,7 @@ export async function contentFilter() {
     const data = await res.json();
     // console.log("dghshgjj: ", data.result);
     const sortedKeys = Object.entries(data.result)
-      .sort(([, a], [, b]) => b - a) // sort by value descending
+      .sort(([, a], [, b]) => (b as number) - (a as number)) // sort by value descending
       .map(([key]) => key);
 
     // console.log("ytwjhbnduyw: ", sortedKeys);
