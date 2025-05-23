@@ -149,10 +149,13 @@ function OfferComponents() {
     const fetchRecommendedFoods = async () => {
       const recommendedFood = await collaborativeFilter({
         mealTime: getGreeting().toLowerCase(),
-        foodItem: value.toLowerCase(), // Use the value directly
+        foodItem: value.toLowerCase(),
       });
 
-      if (!recommendedFood) return;
+      if (!recommendedFood) {
+        setIsLoading(false);
+        return;
+      }
 
       const newMenu: RestaurantType[] = [];
 
@@ -182,7 +185,7 @@ function OfferComponents() {
 
         if (foodItems.length > 0) {
           newMenu.push({
-            id: Math.random() * 100000,
+            id: restaurant[i].id,
             restaurant: restaurant[i].name,
             food: foodItems,
           });
@@ -190,14 +193,14 @@ function OfferComponents() {
       }
 
       setFilterRestaurantCollaborativeMenu(newMenu);
-      setIsLoading(false); // ✅ Only stop loading after the async task finishes
+      setIsLoading(false); // ✅ Now called at the right time
     };
 
     fetchRecommendedFoods();
   };
 
   const similarFood = isLoading ? (
-    <Loader2 size={20} className="animate-spin" />
+    <Loader2 size={200} className="animate-spin w-auto m-auto" />
   ) : (
     filteredCollaborativeMenu.map((item) => (
       <section key={Math.random() * 100000} className="text-black">
