@@ -196,7 +196,7 @@ function OfferComponents() {
                     key={index}
                     onClick={() => {
                       setSelectedRecommendFood((item || "").toLowerCase());
-                      console.log("jdekedkekkdsk: ", selectedMenuFood);
+                      // console.log("jdekedkekkdsk: ", selectedMenuFood);
                     }}
                     className="hover:bg-amber-100 hover:text-amber-700 px-4 py-2 rounded-2xl cursor-pointer"
                   >
