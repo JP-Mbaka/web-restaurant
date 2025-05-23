@@ -12,7 +12,7 @@ const restaurant = restaurantData.restaurant;
 
 function OfferComponents() {
   const [isLoading, setIsLoading] = useState(false);
-  const [searchSimilarFood, setSearchSimilarFood] = useState("");
+  // const [searchSimilarFood, setSearchSimilarFood] = useState("");
   const [selectedSimilarFood, setSelectedSimilarFood] = useState("main");
   const [selectedRecommendFood, setSelectedRecommendFood] = useState("main");
   const [selectedMenuFood, setSelectedMenuFood] = useState("main");
@@ -142,7 +142,7 @@ function OfferComponents() {
   };
 
   const handleValueChange = (value: string) => {
-    setSearchSimilarFood(value);
+    // setSearchSimilarFood(value);
     console.log("Received from child:", value);
     setIsLoading(true);
 
