@@ -4,27 +4,6 @@ import { allFoods, restaurantData } from "@/util/data";
 import { RestaurantType, foodItem } from "@/util/datatypes";
 import React, { useEffect, useState } from "react";
 
-const recommendedFood = [
-  {
-    item: "Coffee",
-    img: "/coffee.jpg",
-    category: "add-ons",
-    price: 200,
-  },
-  {
-    item: "Egwusi",
-    img: "/egwusi.jpg",
-    category: "soup",
-    price: 1200,
-  },
-  {
-    item: "Jellof Rice",
-    img: "/jellof.jpg",
-    category: "main",
-    price: 3750,
-  },
-];
-
 const menuFood = allFoods.food;
 const restaurant = restaurantData.restaurant;
 
@@ -39,8 +18,8 @@ function OfferComponents() {
 
   useEffect(() => {
     const fetchRecommendedFoods = async () => {
-      const recommendedFoodsss = await contentFilter();
-      if (!recommendedFoodsss) return;
+      const recommendedFood = await contentFilter();
+      if (!recommendedFood) return;
 
       const newMenu: RestaurantType[] = [];
 
@@ -51,7 +30,7 @@ function OfferComponents() {
         for (let j = 0; j < menuFood.length; j++) {
           const menuItem = menuFood[j];
 
-          const isRecommended = recommendedFoodsss.some((recommended) =>
+          const isRecommended = recommendedFood.some((recommended) =>
             menuItem.item.toLowerCase().includes(recommended.toLowerCase())
           );
 
@@ -208,7 +187,7 @@ function OfferComponents() {
             </p>
           </div>
         </div>
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 mb-3.5">
           <div className="flex gap-20">
             {["Main", "Swallow", "Soup", "Add-Ons", "Drinks", "Other"].map(
               (item, index) => {
