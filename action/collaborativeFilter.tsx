@@ -1,6 +1,7 @@
 declare type collaborateType = {
   mealTime: string;
   foodItem: string;
+  test?: string;
 };
 export async function collaborativeFilter(input: collaborateType) {
   try {
@@ -27,7 +28,7 @@ export async function collaborativeFilter(input: collaborateType) {
       .map(([key]) => key);
 
     // console.log("ytwjhbnduyw: ", sortedKeys);
-    return sortedKeys.slice(0,20);
+    return sortedKeys.slice(0, 20);
   } catch (error) {
     console.error("Error:", error);
     return null;
